@@ -5,6 +5,17 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push, create]
 
 jobs:
+  steps:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Making Request
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://nbbaier-lowdbTest.web.val.run'
+        method: 'POST'
+        customHeaders: '{"Content-Type": "application/json"}'
+        data: '{"title": "whats up"}'
+          
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
@@ -19,3 +30,4 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+  
